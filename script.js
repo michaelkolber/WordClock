@@ -1,14 +1,9 @@
-// Thank you to Nick Piesco for the inspiration for this code:
-// https://codepen.io/nickpiesco/pen/YPbqPM
-// Although it may seem as if I copied a lot of code from him,
-// the only thing I copied was the .isBetween. The rest is original.
-
 $(function() {
-    
+
     Number.prototype.isBetween = function(a, b) {
         return this >= a && this <= b;
     };
-    
+
     function setTime() {
         var hour = moment().format('h');
         var minute = moment().minute();
@@ -22,8 +17,8 @@ $(function() {
             firsthalf = false;
             secondhalf = true;
         }
-        
-        
+
+
         if (minute.isBetween(0, 2) || minute.isBetween(58, 59)) {
             $('#oclock').addClass('light');
         } else if (minute.isBetween(3, 7) || minute.isBetween(23, 27) ||
@@ -38,16 +33,16 @@ $(function() {
         } else if (minute.isBetween(38, 42)) {
             $('#forty').addClass('light');
         }
-        
+
         if (minute.isBetween(18, 27) || minute.isBetween(33, 37)) {
             $('#twenty').addClass('light');
         }
         if (minute.isBetween(23, 27) || minute.isBetween(33, 37)) {
             $('#dash').addClass('light');
         }
-        
-        
-        
+
+
+
         if ((hour == 12 && secondhalf) || (hour == 1 && firsthalf)) {
             $('#one').addClass('light');
         }
@@ -84,25 +79,25 @@ $(function() {
         if ((hour == 11 && secondhalf) || (hour == 12 && firsthalf)) {
             $('#twelve').addClass('light');
         }
-        
+
         if (meridian == "am") {
             $('#am').addClass('light');
         } else if (meridian == "pm") {
             $('#pm').addClass('light');
         }
-        
-        
-        
+
+
+
         if (minute.isBetween(0, 2) || minute.isBetween(38, 42) || minute.isBetween(58,59)) {
         } else if (firsthalf) {
             $('#past').addClass('light');
         } else if (secondhalf) {
             $('#to').addClass('light');
         }
-        
+
     }
-    
-    
+
+
     function refresh() {
         $('.light').removeClass('light');
         setTime();
